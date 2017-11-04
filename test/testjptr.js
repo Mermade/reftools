@@ -121,4 +121,13 @@ describe('endpointer related tests',function(){
     });
 });
 
+describe('top level tests',function(){
+    it('should be able to mutate the top level object',function(){
+        let o = { hello: "sailor" };
+        let n = { hello: "dolly" };
+        should(jptr(o,'',n)).equal(n);
+        should(jptr(o,'#',n)).equal(n);
+    });
+});
+
 });
