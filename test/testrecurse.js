@@ -2,12 +2,11 @@
 const should = require('should');
 const recurse = require('../lib/recurse.js').recurse;
 
-const input = { container: { child: { value: true, string: '1234' } } };
-
 describe('recurse',function(){
     describe('simple',function(){
         it('should traverse a simple nested object',function(){
 
+            const input = { container: { child: { value: true, string: '1234' } } };
             let output = [];
             recurse(input,{},function(obj,key,state){
                 let entry = {};
@@ -58,6 +57,13 @@ describe('recurse',function(){
         });
         calls.should.be.exactly(0);
     });
+    it('should not traverse a number',function(){
+        let calls = 0;
+        recurse(1,{},function(obj,key,state){
+            calls++;
+        });
+        calls.should.be.exactly(0);
+    });
     it('should not traverse a null',function(){
         let calls = 0;
         recurse(null,{},function(obj,key,state){
@@ -72,4 +78,31 @@ describe('recurse',function(){
         });
         calls.should.be.exactly(3);
     });
+
+    describe('identity',function(){
+        it('should detect object identity',function(){
+            const input = { solo: '123' };
+            const a = { hello: 'sailor' };
+            input.b = a;
+            input.c = a;
+            recurse(input,{identityDetection:true},function(obj,key,state){
+                if (key === 'solo') {
+                    obj[key].should.equal(input.solo);
+                    state.identity.should.be.exactly(false);
+                }
+                else if (key === 'b') {
+                    state.identity.should.be.exactly(false);
+                }
+                else if (key === 'hello') {
+                    state.identity.should.be.exactly(false);
+                }
+                else if (key === 'c') {
+                    should(state.identityPath).not.be.undefined();
+                    state.identity.should.be.exactly(true);
+                    state.identityPath.should.be.exactly('#/b');
+                }
+            });
+        });
+    });
 });
+
