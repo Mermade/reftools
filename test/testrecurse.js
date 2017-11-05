@@ -1,3 +1,4 @@
+'use strict';
 const should = require('should');
 const recurse = require('../lib/recurse.js').recurse;
 

@@ -1,3 +1,4 @@
+'use strict';
 const should = require('should');
 const flatten = require('../lib/flatten.js').flatten;
 

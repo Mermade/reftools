@@ -1,3 +1,4 @@
+'use strict';
 const should = require('should');
 const deref = require('../lib/dereference.js').dereference;
 

@@ -1,3 +1,4 @@
+'use strict';
 const should = require('should');
 const toposort = require('../lib/toposort.js').toposort;
 
