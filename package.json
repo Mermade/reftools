@@ -4,7 +4,7 @@
   "description": "Utility functions to deal with references in objects",
   "main": "lib/recurse.js",
   "scripts": {
-    "test": "node $nflags node_modules/mocha/bin/mocha"
+    "test": "node node_modules/mocha/bin/mocha $nflags"
   },
   "repository": {
     "type": "git",
