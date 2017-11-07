@@ -4,7 +4,8 @@
   "description": "Utility functions to deal with references in objects",
   "main": "lib/recurse.js",
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha $nflags"
+    "test": "node node_modules/mocha/bin/mocha $nflags",
+    "coverage": "npx nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
   "homepage": "https://github.com/mermade/reftools#readme",
   "dependencies": {},
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "js-yaml": "^3.10.0",
     "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^4.0.1",

@@ -13,6 +13,7 @@ const obj = {
       '': true
     },
     '400WithDocument': true,
+    array: [ 'b' ],
     children : [
         {
             $ref: '#/definitions/Child'
@@ -64,6 +65,15 @@ should(jptr(obj,'#/definitions/-/value')).be.equal(true);
 
 should(jptr(obj,'#/not/there/yet','hello')).be.equal('hello');
 should(jptr(obj,'#/not/there/yet')).be.equal('hello');
+
+should(jptr(obj,'#/array/0')).be.equal('b');
+should(jptr(obj,'#/array/0','c')).be.equal('c');
+should(jptr(obj,'#/array/0')).be.equal('c');
+should(jptr(obj,'#/array/1')).be.equal(undefined);
+should(jptr(obj,'#/array/-','d')).be.equal('d');
+should(jptr(obj,'#/array/1')).be.equal('d');
+
+should(jptr(undefined,'#/anything')).be.equal(false);
 });
 });
 
