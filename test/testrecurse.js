@@ -104,5 +104,21 @@ describe('recurse',function(){
             });
         });
     });
+    describe('null',function(){
+        it('should be able to recurse through an object with nulls',function(){
+            recurse({test:null},{},function(obj,key,state){
+                key.should.be.equal('test');
+                should(obj[key]).be.exactly(null);
+            });
+        });
+    });
+    describe('null',function(){
+        it('should be able to recurse through an object with nulls, id',function(){
+            recurse({test:null},{identityDetection:true},function(obj,key,state){
+                key.should.be.equal('test');
+                should(obj[key]).be.exactly(null);
+            });
+        });
+    });
 });
 
