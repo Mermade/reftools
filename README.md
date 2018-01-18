@@ -1,5 +1,7 @@
 ## Constants
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Mermade/reftools.svg)](https://greenkeeper.io/)
+
 <dl>
 <dt><a href="#util">util</a></dt>
 <dd><p>TopoSort function is LICENSE: MIT, everything else is BSD-3-Clause</p>
